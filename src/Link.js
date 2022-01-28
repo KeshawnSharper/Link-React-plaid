@@ -17,12 +17,12 @@ class Link extends Component {
     if (localStorage.getItem("accessToken")){
       window.location.replace(`https://user-stock-funds.web.app/${localStorage.getItem('accessToken')}`)
     }
-    else{
+    // else{
     alert("This is a stimulation as of right now. Select any bank and use these credentials : {username:'user_good',password:'pass_good'} real bank data coming very soon.")
     var response = await axios.post("https://immense-ridge-09781.herokuapp.com/link_token").then()
     console.log(response.data)
     this.setState({linkToken: response.data["link_token"]})
-    }
+    // }
   }
 
   handleOnSuccess = async (public_token, metadata) => {
