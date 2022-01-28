@@ -14,15 +14,15 @@ class Link extends Component {
 
 
   componentDidMount = async () =>{
-    // if (localStorage.getItem("accessToken")){
-    //   window.location.replace(` http://localhost:4200/${localStorage.getItem('accessToken')}`)
-    // }
-    // else{
+    if (localStorage.getItem("accessToken")){
+      window.location.replace(`https://user-stock-funds.web.app/${localStorage.getItem('accessToken')}`)
+    }
+    else{
     alert("This is a stimulation as of right now. Select any bank and use these credentials : {username:'user_good',password:'pass_good'} real bank data coming very soon.")
     var response = await axios.post("https://immense-ridge-09781.herokuapp.com/link_token").then()
     console.log(response.data)
     this.setState({linkToken: response.data["link_token"]})
-    // }
+    }
   }
 
   handleOnSuccess = async (public_token, metadata) => {
@@ -38,7 +38,7 @@ class Link extends Component {
     //to do set accessToken into sessionStorage then move onto UI calls in other components.
     localStorage.setItem("accessToken", response.data["access_token"])
 
-    window.location.replace(` http://localhost:4200/${response.data['access_token']}`);
+    window.location.replace(`https://user-stock-funds.web.app/${response.data['access_token']}`);
     // let transactions = await axios.post("http://localhost:5000/user_transactions", {
     //     access_token: localStorage.getItem("accessToken"),
     //     start_date: '2018-01-01',
