@@ -32,7 +32,7 @@ class Link extends Component {
     //to do set accessToken into sessionStorage then move onto UI calls in other components.
     localStorage.setItem("accessToken", response.data["access_token"])
 
-    window.location.replace(`http://localhost:4200/${response.data['access_token']}`);
+    window.location.replace(`https://user-stock-funds.web.app/${response.data['access_token']}`);
     // let transactions = await axios.post("http://localhost:5000/user_transactions", {
     //     access_token: localStorage.getItem("accessToken"),
     //     start_date: '2018-01-01',
