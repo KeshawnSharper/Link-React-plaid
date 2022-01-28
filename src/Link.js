@@ -14,7 +14,7 @@ class Link extends Component {
 
 
   componentDidMount = async () =>{
-    var response = await axios.post("http://localhost:3000/link_token").then()
+    var response = await axios.post("https://immense-ridge-09781.herokuapp.com/link_token").then()
     console.log(response.data)
     this.setState({linkToken: response.data["link_token"]});
   }
@@ -26,13 +26,13 @@ class Link extends Component {
       // use this as the dummy user for now 
     user_id:1
     }
-    var response = await axios.post("http://localhost:3000/sync_user_to_bank_account", data)
+    var response = await axios.post("https://immense-ridge-09781.herokuapp.com/sync_user_to_bank_account", data)
 
     console.log("response",response)
     //to do set accessToken into sessionStorage then move onto UI calls in other components.
     localStorage.setItem("accessToken", response.data["access_token"])
 
-    window.location.replace(`https://user-stock-funds.web.app/${response.data['access_token']}`);
+    window.location.replace(`http://localhost:4200/${response.data['access_token']}`);
     // let transactions = await axios.post("http://localhost:5000/user_transactions", {
     //     access_token: localStorage.getItem("accessToken"),
     //     start_date: '2018-01-01',
